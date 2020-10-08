@@ -41,7 +41,7 @@ public class YatziMain {
                             ++turn;
                         } else {
                             setGameOver();
-                            break;
+
                         }
                     } else {
                         System.out.println("Game over! Want to play again?");
@@ -49,7 +49,7 @@ public class YatziMain {
                             turn = 0;
                         } else {
                             setGameOver();
-                            break;
+                            
                         }
                     }
                 }
