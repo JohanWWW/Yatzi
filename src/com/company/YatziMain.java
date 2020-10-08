@@ -27,7 +27,7 @@ public class YatziMain {
                 boolean flag = true;
                 for(int j=1;j<5;j++) {
                     if(ds[j].value!=ds[j-1].value) {
-  
+
                         flag = false;
                     }
                 }
