@@ -24,14 +24,8 @@ public class YatziMain {
                 }
 
                 boolean flag = true;
-<<<<<<< HEAD
-                for(int j=1;j<5;j++) {
-                    if(ds[j].value!=ds[j-1].value) {
-
-=======
                 for(int j = 1; j < 5; j++) {
                     if(dice[j].value != dice[j-1].value) {
->>>>>>> 2726c6dfdb1a0435aa8ff3d3785b1b655b6abfc5
                         flag = false;
                     }
                 }
