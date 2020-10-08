@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class YatziMain {
     public static Die[] dice;
     public static boolean isGameOver = false;
+    private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         int turn;
@@ -29,32 +30,39 @@ public class YatziMain {
                         flag = false;
                     }
                 }
-                if(flag == true) {
+                if(flag) {
                     System.out.println("You got YATZI! in " + dice[0].getValue() + "'s");
                     return;
                 } else {
                     //Here we check if there is no Yatzy: then we check what turn we are on and asks the player if we want to continue or not
                     if(turn != 2) {
                         System.out.println("Want to throw again? (y for yes, anything else for no)");
-                        Scanner sc = new Scanner(System.in);
-                        if(sc.next().equals("y")) {
+                        if(promptUser()) {
                             ++turn;
                         } else {
-                            isGameOver = !isGameOver;
+                            setGameOver();
                             break;
                         }
                     } else {
                         System.out.println("Game over! Want to play again?");
-                        Scanner sc = new Scanner(System.in);
-                        if(sc.next().equals("y")) {
+                        if(promptUser()) {
                             turn = 0;
                         } else {
-                            isGameOver = !isGameOver;
+                            setGameOver();
                             break;
                         }
                     }
                 }
             }
         }
+    }
+
+    private static boolean promptUser() {
+        String input = scanner.next();
+        return input.equals("y");
+    }
+
+    private static void setGameOver() {
+        isGameOver = true;
     }
 }
