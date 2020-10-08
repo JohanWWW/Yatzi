@@ -8,6 +8,10 @@ public class YatziMain {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        startGame();
+    }
+
+    private static void startGame() {
         int turn;
         dice = new Die[5];
         for(int d = 0; d < 5; d++) {
