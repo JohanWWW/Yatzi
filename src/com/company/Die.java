@@ -19,8 +19,4 @@ public class Die {
     public void setValue(int value) {
         this.value = value;
     }
-
-    public String getString() {
-        return "Dice shows " + value;
-    }
 }
