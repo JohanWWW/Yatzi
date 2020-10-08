@@ -23,7 +23,7 @@ public class YatziMain {
                     //ds[i].value = 5; //Test if yatzi work
                     System.out.println(i + ": " + ds[i].getString());
                 }
-                //YATZI
+
                 boolean flag = true;
                 for(int j=1;j<5;j++) {
                     if(ds[j].value!=ds[j-1].value) {
