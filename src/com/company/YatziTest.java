@@ -9,7 +9,7 @@ public class YatziTest {
     void isYatziWhenAllDiceMatches() {
         Die[] dice = new Die[5];
         for(Die die: dice) {
-            die.value = 6;
+            die.setValue(6);
         }
         //Assert something?
     }
@@ -18,9 +18,9 @@ public class YatziTest {
     void isNotYatziWhenOneDieIsNotMatchingTheOther() {
         Die[] dice = new Die[5];
         for(Die die: dice) {
-            die.value = 6;
+            die.setValue(6);
         }
-        dice[5].value = 1;
+        dice[5].setValue(1);
         //Assert something?
     }
 }

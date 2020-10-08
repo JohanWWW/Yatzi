@@ -1,19 +1,23 @@
 package com.company;
 
-public class Die extends BoardGameMaterial {
-    public int value = 0;
+public class Die {
+    private int value;
 
     public Die() {
         value = (int) Math.random();
     }
 
-    public int DieRoll() {
+    public int dieRoll() {
         value = (int)(Math.random()*6+1);
         return value;
     }
 
-    public int DieReroll() {
-        return DieRoll();
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
     }
 
     public String getString() {

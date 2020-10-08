@@ -19,18 +19,18 @@ public class YatziMain {
             while (turn < 3) {
                 System.out.println("Starting turn " + (turn + 1) + " of 3, rolling dice.");
                 for(int i = 0; i < dice.length; i++) {
-                    dice[i].DieRoll();
+                    dice[i].dieRoll();
                     System.out.println(i + ": " + dice[i].getString());
                 }
 
                 boolean flag = true;
                 for(int j = 1; j < 5; j++) {
-                    if(dice[j].value != dice[j-1].value) {
+                    if(dice[j].getValue() != dice[j-1].getValue()) {
                         flag = false;
                     }
                 }
                 if(flag == true) {
-                    System.out.println("You got YATZI! in " + dice[0].value + "'s");
+                    System.out.println("You got YATZI! in " + dice[0].getValue() + "'s");
                     return;
                 } else {
                     //Here we check if there is no Yatzy: then we check what turn we are on and asks the player if we want to continue or not
