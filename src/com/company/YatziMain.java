@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class YatziMain {
     public static Die[] dice;
-    public static boolean isGameOver = true;
+    public static boolean isGameOver = false;
 
     public static void main(String[] args) {
         int turn;
