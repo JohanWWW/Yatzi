@@ -24,13 +24,13 @@ public class YatziMain {
                     System.out.println(i + ": " + dice[i].getString());
                 }
 
-                boolean flag = true;
+                boolean yatzi = true;
                 for(int j = 1; j < 5; j++) {
                     if(dice[j].getValue() != dice[j-1].getValue()) {
-                        flag = false;
+                        yatzi = false;
                     }
                 }
-                if(flag) {
+                if(yatzi) {
                     System.out.println("You got YATZI! in " + dice[0].getValue() + "'s");
                     return;
                 } else {
@@ -38,9 +38,9 @@ public class YatziMain {
                     if(turn != 2) {
                         System.out.println("Want to throw again? (y for yes, anything else for no)");
                         if(promptUser()) {
-                            ++turn;
+                            turn++;
                         } else {
-                            setGameOver();
+                            toggleGameOver();
 
                         }
                     } else {
@@ -48,8 +48,8 @@ public class YatziMain {
                         if(promptUser()) {
                             turn = 0;
                         } else {
-                            setGameOver();
-                            
+                            toggleGameOver();
+                            break;
                         }
                     }
                 }
@@ -62,7 +62,7 @@ public class YatziMain {
         return input.equals("y");
     }
 
-    private static void setGameOver() {
-        isGameOver = true;
+    private static void toggleGameOver() {
+        isGameOver = !isGameOver;
     }
 }
