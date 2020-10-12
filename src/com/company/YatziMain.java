@@ -92,7 +92,7 @@ public class YatziMain {
 
     private static void rollDice() {
         for (Die die: dice) {
-            die.dieRoll();
+            die.roll();
         }
     }
 
