@@ -13,4 +13,14 @@ public class YatziTest {
         }
         //Assert something?
     }
+
+    @Test
+    void isNotYatziWhenOneDieIsNotMatchingTheOther() {
+        Die[] dice = new Die[5];
+        for(Die die: dice) {
+            die.setValue(6);
+        }
+        dice[5].setValue(1);
+        //Assert something?
+    }
 }
