@@ -13,9 +13,8 @@ public class YatziMain {
         startGame();
     }
 
-    private static void startGame() {
+    public static void startGame() {
         initializeDice();
-
         while (!isGameOver) {
             turn = 0;
             System.out.println("Welcome to Yatzi!");
@@ -61,17 +60,11 @@ public class YatziMain {
         }
     }
 
-    private static boolean askUser(String question) {
-        System.out.println(question);
-        String input = scanner.next();
-        return input.equals("y");
-    }
-
     private static void toggleGameOver() {
         isGameOver = !isGameOver;
     }
 
-    private static boolean checkIfYatzi() {
+    static boolean checkIfYatzi() {
         boolean isYatzi = true;
         for(int i = 1; i < 5; i++) {
             if(dice[i].getValue() != dice[i - 1].getValue()) {
@@ -82,10 +75,15 @@ public class YatziMain {
     }
 
     private static void initializeDice() {
-        dice = new Die[5];
+        Die[] newDice = new Die[5];
         for(int i = 0; i < 5; i++) {
-            dice[i] = new Die();
+            newDice[i] = new Die();
         }
+        setDice(newDice);
+    }
+
+    static void setDice(Die[] dice) {
+        YatziMain.dice = dice;
     }
 
     private static void rollDice() {
