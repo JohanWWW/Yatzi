@@ -3,8 +3,8 @@ package com.company;
 import java.util.Scanner;
 
 public class YatziMain {
-    public static Die[] dice;
-    public static boolean isGameOver;
+    private static Die[] dice;
+    private static boolean isGameOver;
     private static Scanner scanner = new Scanner(System.in);
     private static int turn;
 
@@ -13,7 +13,7 @@ public class YatziMain {
         startGame();
     }
 
-    public static void startGame() {
+    private static void startGame() {
         initializeDice();
         while (!isGameOver) {
             turn = 0;
@@ -64,26 +64,12 @@ public class YatziMain {
         isGameOver = !isGameOver;
     }
 
-    static boolean checkIfYatzi() {
-        boolean isYatzi = true;
-        for(int i = 1; i < 5; i++) {
-            if(dice[i].getValue() != dice[i - 1].getValue()) {
-                isYatzi = false;
-            }
-        }
-        return isYatzi;
-    }
-
     private static void initializeDice() {
         Die[] newDice = new Die[5];
         for(int i = 0; i < 5; i++) {
             newDice[i] = new Die();
         }
         setDice(newDice);
-    }
-
-    static void setDice(Die[] dice) {
-        YatziMain.dice = dice;
     }
 
     private static void rollDice() {
@@ -106,5 +92,19 @@ public class YatziMain {
         dice = null;
         isGameOver = false;
         turn = 0;
+    }
+
+    static boolean checkIfYatzi() {
+        boolean isYatzi = true;
+        for(int i = 1; i < 5; i++) {
+            if(dice[i].getValue() != dice[i - 1].getValue()) {
+                isYatzi = false;
+            }
+        }
+        return isYatzi;
+    }
+
+    static void setDice(Die[] dice) {
+        YatziMain.dice = dice;
     }
 }

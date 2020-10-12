@@ -26,12 +26,19 @@ public class YatziTest {
 
     @Test
     void isNotYatziWhenOneDieIsNotMatchingTheOther() {
+        // Arrange
         Die[] dice = initializeTestDice();
         for(Die die: dice) {
             die.setValue(6);
         }
         dice[4].setValue(1);
-        //Assert something?
+        YatziMain.setDice(dice);
+
+        // Act
+        boolean isYatzi = YatziMain.checkIfYatzi();
+
+        // Assert
+        assertFalse(isYatzi);
     }
 
     private Die[] initializeTestDice() {
