@@ -4,15 +4,16 @@ import java.util.Scanner;
 
 public class YatziMain {
     public static Die[] dice;
-    public static boolean isGameOver = false;
+    public static boolean isGameOver;
     private static Scanner scanner = new Scanner(System.in);
+    private static int turn;
 
     public static void main(String[] args) {
+        resetGame();
         startGame();
     }
 
     private static void startGame() {
-        int turn;
         initializeDice();
 
         while (!isGameOver) {
@@ -21,6 +22,7 @@ public class YatziMain {
             while (turn < 3) {
                 System.out.println("Starting turn " + (turn + 1) + " of 3, rolling dice.");
                 rollDice();
+                printDice();
 
                 if(checkIfYatzi()) {
                     System.out.println("You got YATZI! in " + dice[0].getValue() + "'s");
@@ -28,18 +30,18 @@ public class YatziMain {
                 }
 
                 //Here we check if there is no Yatzy: then we check what turn we are on and asks the player if we want to continue or not
-                if(turn != 2) {
-                    System.out.println("Want to throw again? (y for yes, anything else for no)");
+                if(isLastTurn()) {
+                    System.out.println("Game over! Want to play again?");
                     if(promptUser()) {
-                        turn++;
+                        turn = 0;
                     } else {
                         toggleGameOver();
                         break;
                     }
                 } else {
-                    System.out.println("Game over! Want to play again?");
+                    System.out.println("Want to throw again? (y for yes, anything else for no)");
                     if(promptUser()) {
-                        turn = 0;
+                        turn++;
                     } else {
                         toggleGameOver();
                         break;
@@ -61,6 +63,12 @@ public class YatziMain {
         }
     }
 
+    private static boolean askUser(String question) {
+        System.out.println(question);
+        String input = scanner.next();
+        return input.equals("y");
+    }
+
     private static void toggleGameOver() {
         isGameOver = !isGameOver;
     }
@@ -68,7 +76,7 @@ public class YatziMain {
     private static boolean checkIfYatzi() {
         boolean isYatzi = true;
         for(int j = 1; j < 5; j++) {
-            if(dice[j].getValue() != dice[j-1].getValue()) {
+            if(dice[j].getValue() != dice[j - 1].getValue()) {
                 isYatzi = false;
             }
         }
@@ -83,9 +91,24 @@ public class YatziMain {
     }
 
     private static void rollDice() {
-        for(int i = 0; i < dice.length; i++) {
-            dice[i].dieRoll();
+        for (Die die: dice) {
+            die.dieRoll();
+        }
+    }
+
+    private static void printDice() {
+        for (int i = 0; i < dice.length; i++) {
             System.out.println(i + ": Dice shows " + dice[i].getValue());
         }
+    }
+
+    private static boolean isLastTurn() {
+        return turn >= 2;
+    }
+
+    private static void resetGame() {
+        dice = null;
+        isGameOver = false;
+        turn = 0;
     }
 }
