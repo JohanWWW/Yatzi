@@ -29,7 +29,6 @@ public class YatziMain {
                     return;
                 }
 
-                //Here we check if there is no Yatzy: then we check what turn we are on and asks the player if we want to continue or not
                 if(isLastTurn()) {
                     System.out.println("Game over! Want to play again?");
                     if(promptUser()) {
@@ -47,7 +46,6 @@ public class YatziMain {
                         break;
                     }
                 }
-
             }
         }
     }
@@ -75,8 +73,8 @@ public class YatziMain {
 
     private static boolean checkIfYatzi() {
         boolean isYatzi = true;
-        for(int j = 1; j < 5; j++) {
-            if(dice[j].getValue() != dice[j - 1].getValue()) {
+        for(int i = 1; i < 5; i++) {
+            if(dice[i].getValue() != dice[i - 1].getValue()) {
                 isYatzi = false;
             }
         }
@@ -85,8 +83,8 @@ public class YatziMain {
 
     private static void initializeDice() {
         dice = new Die[5];
-        for(int d = 0; d < 5; d++) {
-            dice[d] = new Die();
+        for(int i = 0; i < 5; i++) {
+            dice[i] = new Die();
         }
     }
 
