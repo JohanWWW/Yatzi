@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class YatziMain {
     private Die[] dice;
-    private boolean isGameOver;
     private Scanner scanner = new Scanner(System.in);
     private int turn;
 
@@ -15,38 +14,39 @@ public class YatziMain {
 
     private void startGame() {
         initializeDice();
-        while (!isGameOver) {
-            turn = 0;
-            System.out.println("Welcome to Yatzi!");
-            while (turn < 3) {
-                System.out.println("Starting turn " + (turn + 1) + " of 3, rolling dice.");
-                rollDice();
-                printDice();
+        turn = 0;
+        while (!isGameOver()) {
+            if (isFirstTurn())
+                System.out.println("Welcome to Yatzi!");
 
-                if(checkIfYatzi()) {
-                    System.out.println("You got YATZI! in " + dice[0].getValue() + "'s");
-                    return;
-                }
+            System.out.println("Starting turn " + (turn + 1) + " of 3, rolling dice.");
+            rollDice();
+            printDice();
 
-                if(isLastTurn()) {
-                    System.out.println("Game over! Want to play again?");
-                    if(promptUser()) {
-                        turn = 0;
-                    } else {
-                        toggleGameOver();
-                        break;
-                    }
+            if(checkIfYatzi()) {
+                System.out.println("You got YATZI! in " + dice[0].getValue() + "'s");
+                return;
+            }
+
+            if(isLastTurn()) {
+                System.out.println("Game over! Want to play again?");
+                if(promptUser()) {
+                    turn = 0;
                 } else {
-                    System.out.println("Want to throw again? (y for yes, anything else for no)");
-                    if(promptUser()) {
-                        turn++;
-                    } else {
-                        toggleGameOver();
-                        break;
-                    }
+                    //toggleGameOver();
+                    break;
+                }
+            } else {
+                System.out.println("Want to throw again? (y for yes, anything else for no)");
+                if(promptUser()) {
+                    turn++;
+                } else {
+                    //toggleGameOver();
+                    break;
                 }
             }
-        }
+       }
+        scanner.close();
     }
 
     private boolean promptUser() {
@@ -59,10 +59,6 @@ public class YatziMain {
                 return false;
 
         }
-    }
-
-    private void toggleGameOver() {
-        isGameOver = !isGameOver;
     }
 
     private void initializeDice() {
@@ -87,6 +83,14 @@ public class YatziMain {
 
     private boolean isLastTurn() {
         return turn >= 2;
+    }
+
+    private boolean isFirstTurn() {
+        return turn == 0;
+    }
+
+    private boolean isGameOver() {
+        return turn == 3;
     }
 
     boolean checkIfYatzi() {
