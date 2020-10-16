@@ -2,13 +2,13 @@ package com.company;
 
 import java.util.Scanner;
 
-public class YatziMain {
+public class Yatzi {
     private Die[] dice;
     private Scanner scanner = new Scanner(System.in);
     private int turn;
 
     public static void main(String[] args) {
-        var game = new YatziMain();
+        var game = new Yatzi();
         game.startGame();
     }
 

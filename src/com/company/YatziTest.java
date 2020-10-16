@@ -2,9 +2,6 @@ package com.company;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class YatziTest {
@@ -15,7 +12,7 @@ public class YatziTest {
         for(Die die: dice) {
             die.setValue(6);
         }
-        var game = new YatziMain();
+        var game = new Yatzi();
         game.setDice(dice);
 
         // Act
@@ -33,7 +30,7 @@ public class YatziTest {
             die.setValue(6);
         }
         dice[4].setValue(1);
-        var game = new YatziMain();
+        var game = new Yatzi();
         game.setDice(dice);
 
         // Act
