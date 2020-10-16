@@ -3,17 +3,17 @@ package com.company;
 import java.util.Scanner;
 
 public class YatziMain {
-    private static Die[] dice;
-    private static boolean isGameOver;
-    private static Scanner scanner = new Scanner(System.in);
-    private static int turn;
+    private Die[] dice;
+    private boolean isGameOver;
+    private Scanner scanner = new Scanner(System.in);
+    private int turn;
 
     public static void main(String[] args) {
-        resetGame();
-        startGame();
+        var game = new YatziMain();
+        game.startGame();
     }
 
-    private static void startGame() {
+    private void startGame() {
         initializeDice();
         while (!isGameOver) {
             turn = 0;
@@ -49,7 +49,7 @@ public class YatziMain {
         }
     }
 
-    private static boolean promptUser() {
+    private boolean promptUser() {
         String input = scanner.next();
         switch (input) {
             case "y":
@@ -57,14 +57,15 @@ public class YatziMain {
             case "n":
             default:
                 return false;
+
         }
     }
 
-    private static void toggleGameOver() {
+    private void toggleGameOver() {
         isGameOver = !isGameOver;
     }
 
-    private static void initializeDice() {
+    private void initializeDice() {
         Die[] newDice = new Die[5];
         for(int i = 0; i < 5; i++) {
             newDice[i] = new Die();
@@ -72,29 +73,23 @@ public class YatziMain {
         setDice(newDice);
     }
 
-    private static void rollDice() {
+    private void rollDice() {
         for (Die die: dice) {
             die.roll();
         }
     }
 
-    private static void printDice() {
+    private void printDice() {
         for (int i = 0; i < dice.length; i++) {
             System.out.println(i + ": Dice shows " + dice[i].getValue());
         }
     }
 
-    private static boolean isLastTurn() {
+    private boolean isLastTurn() {
         return turn >= 2;
     }
 
-    private static void resetGame() {
-        dice = null;
-        isGameOver = false;
-        turn = 0;
-    }
-
-    static boolean checkIfYatzi() {
+    boolean checkIfYatzi() {
         boolean isYatzi = true;
         for(int i = 1; i < 5; i++) {
             if(dice[i].getValue() != dice[i - 1].getValue()) {
@@ -104,7 +99,7 @@ public class YatziMain {
         return isYatzi;
     }
 
-    static void setDice(Die[] dice) {
-        YatziMain.dice = dice;
+    void setDice(Die[] dice) {
+        this.dice = dice;
     }
 }

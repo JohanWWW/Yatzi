@@ -15,10 +15,11 @@ public class YatziTest {
         for(Die die: dice) {
             die.setValue(6);
         }
-        YatziMain.setDice(dice);
+        var game = new YatziMain();
+        game.setDice(dice);
 
         // Act
-        boolean isYatzi = YatziMain.checkIfYatzi();
+        boolean isYatzi = game.checkIfYatzi();
 
         // Assert
         assertTrue(isYatzi);
@@ -32,10 +33,11 @@ public class YatziTest {
             die.setValue(6);
         }
         dice[4].setValue(1);
-        YatziMain.setDice(dice);
+        var game = new YatziMain();
+        game.setDice(dice);
 
         // Act
-        boolean isYatzi = YatziMain.checkIfYatzi();
+        boolean isYatzi = game.checkIfYatzi();
 
         // Assert
         assertFalse(isYatzi);
