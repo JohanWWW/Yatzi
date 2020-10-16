@@ -28,24 +28,21 @@ public class YatziMain {
                 return;
             }
 
-            if(isLastTurn()) {
+            if (isLastTurn()) {
                 System.out.println("Game over! Want to play again?");
                 if(promptUser()) {
                     turn = 0;
-                } else {
-                    //toggleGameOver();
-                    break;
+                    continue;
                 }
             } else {
                 System.out.println("Want to throw again? (y for yes, anything else for no)");
                 if(promptUser()) {
                     turn++;
-                } else {
-                    //toggleGameOver();
-                    break;
+                    continue;
                 }
             }
-       }
+            break;
+        }
         scanner.close();
     }
 
